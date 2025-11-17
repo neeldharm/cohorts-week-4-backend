@@ -14,6 +14,14 @@ function CounterList() {
   const [counterName, setCounterName] = useState("");
 
   useEffect(() => {
+    fetch("http://localhost:3000/")
+      .then((res) => res.text())
+      .then((data) => {
+        console.log("CORS test result:", data);
+      })
+      .catch((err) => {
+        console.error("CORS test failed as expected:", err);
+      });
     loadCounters().then(setCounters);
   }, []);
 
